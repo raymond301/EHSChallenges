@@ -1,3 +1,9 @@
+/*
+ * FTC Programming Challenge #1
+ * There is only 2 issues here.
+ * The robot should drive forward, then stop.
+ */
+
 #pragma config(Hubs,  S1, HTMotor,  HTServo,  none,     none)
 #pragma config(Sensor, S1,     ,               sensorI2CMuxController)
 #pragma config(Sensor, S2,     compass,        sensorVirtualCompass)
@@ -10,40 +16,29 @@
 
 /************************************\
 |*     ROBOTC Virtual World         *|
-|*         GripperBot               *|
+|*       GripperBot (compass)       *|
 \************************************/
 
-
-void tightRightTurn()
-{
-	motor[motorD] = 0;
-	motor[motorE] = 0;
-	wait1Msec(500);
-	motor[motorD] = -100;
-	motor[motorE] = 100;
-	wait1Msec(710);
-	return;
-}
-
 int threshold = 40;
+bool keepGoing = false;
+int fast = 100;
+int medium = 50;
+int sortaBackUp = -50;
 
 task main()
 {
-	// run forever:
-  while(true)
+  while(keepGoing)
   {
-
 		if(SensorValue(s4) < threshold && SensorValue(s4) != -1)
     {
-      // HALT and back up!:
-      motor[right] = -75;
-      motor[left]  = -75;
+      motor[motorD]=sortaBackUp;
+      motor[motorE]=sortaBackUp;
       wait1Msec(800);
-			tightRightTurn();
+			keepGoing=true;
 		}//end if threshold
 
-		motor[motorD] = 100;
-		motor[motorE] = 100;
+		motor[motorD] = fast;
+		motor[motorE] = fast;
 
-	}//end while: forever
+	}//end while: [keepGoing]
 }
