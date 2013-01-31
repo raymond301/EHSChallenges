@@ -44,6 +44,7 @@ task main()
 
 		motor[motorD] = 100;
 		motor[motorE] = 100;
+	tightRightTurn();
 
 	}//end while: forever
 }

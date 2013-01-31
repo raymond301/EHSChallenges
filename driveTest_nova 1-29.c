@@ -21,14 +21,15 @@ task main()
 {
 
 	int threshold = 5;             /* Int 'threshold' will allow us to ignore low       */
-  servoChangeRate[srvo_S1_C2_5] = 4;
+  int a = ServoValue[servo[srvo_S1_C2_6]];
+	servoChangeRate[srvo_S1_C2_5] = 4;
+
   while(true)                            // Infinite loop:
   {
     getJoystickSettings(joystick);
-
     if(abs(joystick.joy1_y2) > threshold)   // If the right analog stick's Y-axis readings are either above or below the threshold:
     {
-      motor[mtr_S1_C1_1] = joystick.joy2_y2;         // Motor B is assigned a power level equal to the right analog stick's Y-axis reading.
+      motor[mtr_S1_C1_1] = joystick.joy1_y2-75;         // Motor B is assigned a power level equal to the right analog stick's Y-axis reading.
     }
     else                                    // Else if the readings are within the threshold:
     {
@@ -38,12 +39,15 @@ task main()
 
     if(abs(joystick.joy1_y1) > threshold)   // If the left analog stick's Y-axis readings are either above or below the threshold:
     {
-      motor[mtr_S1_C1_2] = joystick.joy1_y1;         // Motor C is assigned a power level equal to the left analog stick's Y-axis reading.
+      motor[mtr_S1_C1_2] = joystick.joy1_y1-75;         // Motor C is assigned a power level equal to the left analog stick's Y-axis reading.
     }
     else                                   // Else if the readings are within the threshold:
     {
     motor[mtr_S1_C1_2] = 0;      																																																																																																															                  // Motor C is stopped with a power level of 0.
     }
+
+
+
 
 
 		if(joy1Btn(6))
