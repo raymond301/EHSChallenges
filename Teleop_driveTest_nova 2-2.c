@@ -1,4 +1,3 @@
-
 #pragma config(Hubs,  S1, HTMotor,  HTServo,  HTMotor,  none)
 #pragma config(Sensor, S1,     IRSeeker,       sensorI2CMuxController)
 #pragma config(Motor,  motorA,          gripMotor,     tmotorNXT, openLoop, encoder)
@@ -140,21 +139,14 @@ task main()
 				servo[srvo_S1_C2_6] = 80;
 			}
 		}
-		else if (joy1Btn(3))
-		{
-			{
-				 int a = ServoValue[servo[srvo_S1_C2_6]];   //Button 3 moves servo up 1
-				servo[srvo_S1_C2_6] = a+1;
-			}
-		}
 
 
 		if(joy1Btn(7)){motor[ramp]=10;}               // Button 7 ramp up 10
 		else if(joy1Btn(8)){motor[ramp]=-20;}         // Button 8 ramp down 20
 		else{motor[ramp]=0;}
 
-		if(joy1Btn(1)){motor[Extend_Arm]=25;}          // Button 1 arm up 25
-		else if(joy1Btn(2)){motor[Extend_Arm]=-15;}    // Button 2 arm down 15
+		if(joy1Btn(1)){motor[Extend_Arm]=25;}          // Button 1 arm up at 25
+		else if(joy1Btn(2)){motor[Extend_Arm]=-15;}    // Button 2 arm down at 15
 		else
 		{
 			motor[Extend_Arm]=0;

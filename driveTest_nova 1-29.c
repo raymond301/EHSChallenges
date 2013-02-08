@@ -21,7 +21,7 @@ task main()
 {
 
 	int threshold = 5;             /* Int 'threshold' will allow us to ignore low       */
-  int a = ServoValue[servo[srvo_S1_C2_6]];
+
 	servoChangeRate[srvo_S1_C2_5] = 4;
 
   while(true)                            // Infinite loop:
